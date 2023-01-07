@@ -76,8 +76,7 @@ class App
     puts 'Rentals: '
     @rentals.each do |rental|
       if rental.person.id.to_s == person_id.to_s
-        puts "#{rental.class} #{rental.date} | Book: \"#{rental.book.title}\" rented by #{rental.person.name}"1
-    
+        puts "#{rental.class} #{rental.date} | Book: \"#{rental.book.title}\" rented by #{rental.person.name}"
       end
     end
     puts ''
