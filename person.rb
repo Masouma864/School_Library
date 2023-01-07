@@ -38,4 +38,4 @@ person.correct_name
 capitalized_person = Capitalize.new(person)
 capitalized_person.correct_name
 capitalized_trimmed = Trimmer.new(capitalized_person)
-puts capitalized_trimmed.correct_name
+capitalized_trimmed.correct_name

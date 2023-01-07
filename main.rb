@@ -1,48 +1,45 @@
-require_relative 'app'
-
-def list_of_options
-  puts 'choose an option from the following list:'
-  puts '1. List all books'
-  puts '2. List all people'
-  puts '3. Create a person (teacher or student)'
-  puts '4. Create a book'
-  puts '5. Create a rental'
-  puts '6. List all rentals for a given person id'
-  puts '7. Exit'
-  option_integer = gets.chomp.to_i
-  options(option_integer)
-  extras(option_integer)
-end
-
-def options(option)
-  case option
-  when 1
-    list_all_books
-  when 2
-    list_all_people
-  when 3
-    create_person
-  when 4
-    create_book
-  when 5
-    create_rental
-  when 6
-    list_rental_for_person
-  end
-end
-
-def extras(option)
-  case option
-  when 7
-    puts 'Thank you for using the Library System. Goodbye!'
-  else
-    list_of_options
-  end
-end
+require_relative './app'
 
 def main
   app = App.new
-  app.start
+  puts "\nWelcome School Library of Waris!\n\n"
+  display_menu(app)
+end
+
+def display_menu(app) # rubocop:disable Metrics/CyclomaticComplexity
+  loop do
+    menu
+    input = user_input
+    case input
+    when 1 then app.list_books
+    when 2 then app.list_people
+    when 3 then app.create_person
+    when 4 then app.create_book
+    when 5 then app.create_rental
+    when 6 then app.list_rentals
+    when 7 then break
+    end
+  end
+end
+
+def menu
+  puts 'Choose your option by entering a number:'
+  puts '1 - List all Books.'
+  puts '2 - List all People.'
+  puts '3 - Create a Person.'
+  puts '4 - Create a Book.'
+  puts '5 - Create a Rental.'
+  puts '6 - List all rentals for a given person id.'
+  puts '7 - Exit'
+end
+
+def user_input
+  input = gets.chomp.to_i
+  while input > 7 || input < 1
+    puts 'Please enter a valid option between 1 to 7: '
+    input = gets.chomp.to_i
+  end
+  input
 end
 
 main
