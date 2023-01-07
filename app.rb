@@ -72,11 +72,12 @@ class App
 
   def list_rentals
     print 'ID of person: '
-    person_id = gets.chomp
+    person_id = gets.chomp.to_i
     puts 'Rentals: '
     @rentals.each do |rental|
       if rental.person.id.to_s == person_id.to_s
-        puts "#{rental.class} #{rental.date} | Book: \"#{rental.book.title}\" rented by #{rental.person.name}"
+        puts "#{rental.class} #{rental.date} | Book: \"#{rental.book.title}\" rented by #{rental.person.name}"1
+    
       end
     end
     puts ''
